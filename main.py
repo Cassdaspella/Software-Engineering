@@ -95,7 +95,7 @@ class output:
     going_on = True
     sandwhichmaker = SandwichMachine(resources)
     while going_on:
-        choice = input("small/medium/large/off/resources\n")
+        choice = input("What would you like? small/medium/large/off/resources\n")
         if choice == "off":
             break
         elif choice == "resources":
