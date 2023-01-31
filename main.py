@@ -88,7 +88,7 @@ class SandwichMachine:
            Hint: no output"""
         for ingredients in order_ingredients:
             self.machine_resources.update({ingredients : self.machine_resources.get(ingredients) - order_ingredients.get(ingredients)})
-
+###output complete###
 ### Make an instance of SandwichMachine class and write the rest of the codes###
 class output:
     going_on = True
