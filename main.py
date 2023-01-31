@@ -42,7 +42,7 @@ class SandwichMachine:
         """Receives resources as input.
            Hint: bind input variable to self variable"""
         self.machine_resources = machine_resources
-
+###complete!###
     def check_resources(self, ingredients):
         for items in ingredients:
             if ingredients.get(items) <= self.machine_resources.get(items):
@@ -89,7 +89,7 @@ class SandwichMachine:
         for ingredients in order_ingredients:
             self.machine_resources.update({ingredients : self.machine_resources.get(ingredients) - order_ingredients.get(ingredients)})
 
-### Make an instance of SandwichMachine class and write the rest of the codes ###
+### Make an instance of SandwichMachine class and write the rest of the codes###
 class output:
     going_on = True
     sandwhichmaker = SandwichMachine(resources)
