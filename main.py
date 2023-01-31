@@ -97,6 +97,7 @@ class output:
     while going_on:
         choice = input("What would you like? small/medium/large/off/resources\n")
         if choice == "off":
+            print("have a great day!")
             break
         elif choice == "resources":
             print(f"Bread:{resources['bread']} slice(s) "
