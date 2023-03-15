@@ -1,3 +1,4 @@
+
 class sandwich_maker:
     def __init__(self, resources):
         self.machine_resources = resources
@@ -18,3 +19,8 @@ class sandwich_maker:
         for ingredients in order_ingredients:
             self.machine_resources.update(
                 {ingredients: self.machine_resources.get(ingredients) - order_ingredients.get(ingredients)})
+
+            DB_HOST = "localhost"
+            DB_NAME = "sandwich_maker"
+            DB_USERNAME = "root"
+            DB_Password = "rootroot"
