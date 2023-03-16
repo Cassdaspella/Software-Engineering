@@ -1,8 +1,8 @@
-
+import sqlalchemy
 from flask import Flask, flash, redirect, url_for, render_template, session
 from flask import request
 
-from flask_sqlalchemy import SQLAlchemy
+from flask.ext.sqlalchemy import SQLAlchemy
 
 DB_HOST = "localhost"
 DB_NAME = "sandwich_maker"
