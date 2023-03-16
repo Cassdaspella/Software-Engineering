@@ -6,16 +6,13 @@
 </head>
 <body>
 <h3>Sandwich Maker</h3>
-	<a href="/add.html">Add</a>
-    <a href="/delete.html">Delete</a>
-    <a href="/list.html">List</a>
-    <a href="/update.html">Update</a>
 <hr/>
 {%- for message in get_flashed_messages() %}
 {{ message }}
 {%- endfor %}
 
 <h3><a href="{{ url_for('resource') }}">Resorce List </a></h3>
+<h3><a href="{{ url_for('sandwich') }}">Sandwich List </a></h3>
 
 </body>
 </html>

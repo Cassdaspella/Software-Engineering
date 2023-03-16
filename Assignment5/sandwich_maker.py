@@ -5,7 +5,7 @@ from flask import request
 from flask_sqlalchemy import SQLAlchemy
 
 DB_HOST = "localhost"
-DB_NAME = "sandwich_maker"
+DB_NAME = "sandwichmaker4"
 DB_USERNAME = "root"
 DB_Password = "Leenababy8*"
 
@@ -17,8 +17,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 
 db = SQLAlchemy(app)
 
-if __name__ == '__main__':
-    app.run(port=3306, host="localhost", debug=True)
+
 
 
 class Resource(db.Model):
@@ -30,6 +29,7 @@ class Resource(db.Model):
     def __init__(self, item, amount):
         self.item = item
         self.amount = amount
+
 
 
 @app.route("/")
@@ -91,12 +91,12 @@ def delete_resource(id):
 class Sandwich(db.Model):
     __tablename__ = 'sandwich'
     id = db.Column(db.Integer, primary_key=True)
-    item = db.Column(db.String(100), nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
+    sandwich_size = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.Float, nullable=False)
 
-    def __init__(self, item, amount):
-        self.item = item
-        self.amount = amount
+    def __init__(self, sandwich_size, price):
+        self.sandwich_size = sandwich_size
+        self.price = price
 
 
 @app.route("/sandwich")
@@ -107,10 +107,10 @@ def sandwich():
 @app.route('/addsandwich', methods=['GET','POST'])
 def add_sandwich():
     if request.method == 'POST':
-        if not request.form['item'] or not request.form['amount']:
+        if not request.form['sandwich_size'] or not request.form['price']:
             flash('Please enter all the fields', 'error')
         else:
-            sandwich = Sandwich(request.form['item'], request.form['amount'])
+            sandwich = Sandwich(request.form['sandwich_size'], request.form['price'])
 
             db.session.add(sandwich)
             db.session.commit()
@@ -120,15 +120,15 @@ def add_sandwich():
     return render_template('sandwich/add.html')
 
 
-@app.route('/updatesandich/<int:id>/', methods=['GET','POST'])
+@app.route('/updatesandwich/<int:id>/', methods=['GET','POST'])
 def update_sandwich(id):
     if request.method == 'POST':
-        if not request.form['item'] or not request.form['amount']:
+        if not request.form['sandwich_size'] or not request.form['price']:
             flash('Please enter all the fields', 'error')
         else:
             sandwich = Sandwich.query.filter_by(id=id).first()
-            sandwich.item = request.form['item']
-            sandwich.amount = request.form['amount']
+            sandwich.sandwich_size = request.form['sandwich_size']
+            sandwich.price = request.form['price']
             db.session.commit()
 
             flash('Record was successfully updated')
@@ -148,3 +148,6 @@ def delete_sandwich(id):
         return redirect(url_for('sandwich'))
     data = Sandwich.query.filter_by(id=id).first()
     return render_template("sandwich/delete.html", data=data)
+
+if __name__ == '__main__':
+    app.run(port=3001, host="localhost", debug=True)
